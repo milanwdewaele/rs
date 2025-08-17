@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const height = searchParams.get("height");
 
     if (!url) {
-        return new NextResponse("URL parameter is required", { status: 400 });
+        return new NextResponse('Je moet een parameter toevoegen aan de URL.\nVoorbeeld: "?url=https://example.com/image.jpg&width=300&height=200"', { status: 400 });
     }
 
     try {
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
         const format = metadata.format;
 
         if (!format || !["png", "jpg", "jpeg", "gif"].includes(format)) {
-            return new NextResponse("Unsupported image format", { status: 400 });
+            return new NextResponse("Mediaformaat is niet ondersteund.", { status: 400 });
         }
 
         // Resize the image
@@ -57,6 +57,6 @@ export async function GET(request: NextRequest) {
         });
     } catch (error) {
         console.error("Error:", error);
-        return new NextResponse("An error occurred while processing the image", { status: 500 });
+        return new NextResponse("Er is iets misgelopen... \nWhoops :/", { status: 500 });
     }
 }

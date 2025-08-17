@@ -1,1 +1,0 @@
-<p>Example: "http://localhost:3000/api/resize?url=https://example.com/image.jpg&width=300&height=200"</p>
