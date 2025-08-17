@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         const outputBuffer = await resizedImage.toBuffer();
 
         // Return the resized image
-        return new NextResponse(outputBuffer, {
+        return new NextResponse(new Uint8Array(outputBuffer), {
             headers: {
                 "Content-Type": `image/${format}`,
                 "Cache-Control": "public, max-age=31536000, immutable",
